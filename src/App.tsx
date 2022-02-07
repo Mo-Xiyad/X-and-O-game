@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
-import Enter from './components/Enter'
 import { Routes,Route } from 'react-router-dom';
-import Game from './components/Game';
+import { routes } from './routes';
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Enter />}/>
-      <Route path="/" element={<Game />}/>
+      {routes.map(([path, Element]) =>
+        <Route path={path} element={<Element />}/>
+      )}
     </Routes>
   );
 }
