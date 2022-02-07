@@ -5,7 +5,7 @@ import { routes } from "./routes";
 
 function App() {
   return (
-    <div id="enter" className="h-screen w-screen bg-primary">
+    <div className="h-screen w-screen bg-primary font-mono">
       <Routes>
         {routes.map(([path, Element]) => (
           <Route path={path} element={<Element />} />
