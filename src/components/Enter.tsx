@@ -20,17 +20,18 @@ const Enter = () => {
     >
       <div>
         <div className="flex justify-center mb-20">
-          <h1 className="text-3xl font-extrabold antialiased font-mono">
+          <h1 className="text-3xl text-white font-extrabold antialiased font-mono">
             {" "}
             Tic Tac Toe Game
           </h1>
         </div>
         <div className="w-full max-w-xs">
-          <form className="bg-gray-400 shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
+          <form
+            className="bg-gray-400 shadow-md rounded px-8 pt-6 pb-8 mb-4"
+            onSubmit={handleSubmit}
+          >
             <div className="mb-4 ">
-              <label
-                className="block text-gray-700 text-md font-bold flex items-center justify-center mb-5 antialiased font-mono"
-              >
+              <label className="block text-dark text-md font-bold flex items-center justify-center mb-5 antialiased font-mono">
                 Player Name
               </label>
               <input
@@ -38,7 +39,7 @@ const Enter = () => {
                 id="username"
                 type="text"
                 value={name}
-                onChange={e => setName(e.target.value)}
+                onChange={(e) => setName(e.target.value)}
                 placeholder="Name"
               />
             </div>
