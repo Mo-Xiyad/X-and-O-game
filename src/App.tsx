@@ -17,7 +17,7 @@ function App() {
   return (
     <RecoilRoot>
         <AppModal />
-      <div className="h-screen w-screen bg-primary font-mono">
+      <div className="w-screen bg-primary font-mono">
         <Routes>
           {routes.map(([path, Element], i) => (
             <Route path={path} element={<Element />} key={i} />
