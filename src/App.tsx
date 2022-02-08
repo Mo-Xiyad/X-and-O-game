@@ -5,6 +5,7 @@ import { routes } from "./routes";
 import { RecoilRoot } from "recoil";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import AppModal from "./components/AppModal";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
   }, []);
   return (
     <RecoilRoot>
+        <AppModal />
       <div className="h-screen w-screen bg-primary font-mono">
         <Routes>
           {routes.map(([path, Element], i) => (
