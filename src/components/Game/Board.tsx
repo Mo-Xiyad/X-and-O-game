@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { nameState } from "../../atoms/nameState";
 import { symbolState } from "../../atoms/symbolState";
+import AOS from "aos";
 
 export type Symbol = "O" | "X" | null;
 export default function Board() {
@@ -24,12 +25,21 @@ export default function Board() {
     newMatrix[y][x] = symbol;
     setMatrix(newMatrix);
   };
+    useEffect(() => {
+      AOS.init({
+        duration: 2000,
+      });
+    }, []);
 
   return (
     <>
       <header className="pt-[2em] flex justify-between mx-[4ch]">
-        <h4 className="text-white">player one {name}</h4>
-        <h4 className="text-white">player two</h4>
+        <h4 className="text-white" data-aos="zoom-in-up">
+          player one {name}
+        </h4>
+        <h4 className="text-white" data-aos="zoom-in-up">
+          player two
+        </h4>
       </header>
       <div id="board" className="bg-primary items-center m-auto">
         {matrix.map((row, y) => (

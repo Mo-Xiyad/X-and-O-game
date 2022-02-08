@@ -24,6 +24,7 @@ const Enter = () => {
     <div
       id="enter"
       className="h-screen w-screen bg-primary flex justify-center items-center"
+      data-aos="zoom-out-up"
     >
       <div>
         <div className="flex justify-center mb-20">

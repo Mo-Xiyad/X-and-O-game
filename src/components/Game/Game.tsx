@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { nameState } from "../../atoms/nameState";
 import Board from "./Board";
 
+
 export default function Game() {
   const name = useRecoilValue(nameState);
+  
   return (
     <div id="game" className="text-white bg-primary">
       {/* TOAST */}
@@ -17,7 +19,9 @@ export default function Game() {
       </div> */}
 
       <div className="flex justify-center pt-5">
-        <h1 className="text-3xl">Welcome</h1>
+        <h1 className="text-3xl" data-aos="fade-left">
+          Welcome
+        </h1>
       </div>
       <div className="flex h-[100vh] flex-col">
         <Board />
