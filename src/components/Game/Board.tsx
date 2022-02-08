@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { nameState } from "../../atoms/nameState";
 import { symbolState } from "../../atoms/symbolState";
 import AOS from "aos";
 
 export type Symbol = "O" | "X" | null;
+
+interface Opponent {
+  name: string;
+  socketId: string;
+}
+
+
 export default function Board() {
   const [matrix, setMatrix] = useState<[Symbol, Symbol, Symbol][]>([
     //00    01    02

@@ -1,12 +1,17 @@
 import React, { useEffect } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { gameState } from "../../atoms/gameState";
 import { nameState } from "../../atoms/nameState";
 import Board from "./Board";
 
-
 export default function Game() {
   const name = useRecoilValue(nameState);
-  
+  const [game, setGameState] = useRecoilState(gameState);
+
+  useEffect(() => {
+    game === "ENTERING" && setGameState("PLAYING");
+  }, [game]);
+
   return (
     <div id="game" className="text-white bg-primary">
       {/* TOAST */}
