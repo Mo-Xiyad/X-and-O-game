@@ -1,13 +1,23 @@
 import React,{useState,useEffect} from "react";
 import { useNavigate } from "react-router";
 
+
+import { useRecoilState } from "recoil";
+import { nameState } from "../../atoms/nameState";
+
 const Enter = () => {
-  const [name, setName] = useState("");
+  const [name, setName] = useRecoilState(nameState);
+  // const [name, setName] = useState()
   const navigate = useNavigate()
 
-  const handleSubmit= ()=>{
+  
+  // const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+  if (name) {
     navigate("/play");
   }
+};
 
   useEffect(() =>{
     console.log(name);
@@ -46,7 +56,11 @@ const Enter = () => {
 
             <div className="flex items-center justify-center">
               <button
-                className="bg-secondary hover:bg-rose-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline antialiased font-mono"
+                className={
+                  !name
+                    ? "cursor-not-allowed text-white font-bold py-2 px-4 rounded bg-secondary"
+                    : `bg-secondary hover:bg-rose-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline antialiased font-mono`
+                }
                 type="submit"
               >
                 Play
