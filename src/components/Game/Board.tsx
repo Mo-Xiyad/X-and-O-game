@@ -16,7 +16,7 @@ export default function Board() {
   const name = useRecoilValue(nameState);
   //   const [symbol, setSymbol] = useRecoilState(symbolState);
 
-  const symbol: Symbol = "X";
+  const symbol: Symbol = "O";
   const handleMatrixUpdate = (x: number, y: number) => {
     if (!!matrix[y][x]) return;
 
@@ -31,17 +31,18 @@ export default function Board() {
         <h4 className="text-white">player one {name}</h4>
         <h4 className="text-white">player two</h4>
       </header>
-
       <div id="board" className="bg-primary items-center m-auto">
         {matrix.map((row, y) => (
           <div className="board-row flex" key={`row_${y}`}>
             {row.map((symbol, x) => (
               <div
-                className="board-cell w-[30vmin] h-[30vmin] cursor-pointer border-solid border-4 border-white text-2xl grid place-items-center"
+                className="board-cell w-[25vmin] h-[25vmin] cursor-pointer border-solid border-4 border-white text-2xl grid place-items-center"
                 key={`cell_${x}`}
                 onClick={() => handleMatrixUpdate(x, y)}
               >
-                {symbol}
+                {symbol && (
+                  <img src={`/assets/${symbol}.png`} data-symbol={symbol} />
+                )}
                 {/* &&
                 <img src={`/assets/${symbol}.png`} data-symbol={symbol} /> */}
               </div>
