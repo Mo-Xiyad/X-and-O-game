@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { nameState } from "../../atoms/nameState";
+import { symbolState } from "../../atoms/symbolState";
 
-type Symbol = "O" | "X" | null;
+export type Symbol = "O" | "X" | null;
 export default function Board() {
   const [matrix, setMatrix] = useState<[Symbol, Symbol, Symbol][]>([
     //00    01    02
@@ -13,12 +14,14 @@ export default function Board() {
     [null, null, null],
   ]);
   const name = useRecoilValue(nameState);
+  //   const [symbol, setSymbol] = useRecoilState(symbolState);
 
+  const symbol: Symbol = "X";
   const handleMatrixUpdate = (x: number, y: number) => {
     if (!!matrix[y][x]) return;
 
     const newMatrix = [...matrix];
-    //    newMatrix[y][x] = symbol;
+    newMatrix[y][x] = symbol;
     setMatrix(newMatrix);
   };
 
@@ -39,6 +42,8 @@ export default function Board() {
                 onClick={() => handleMatrixUpdate(x, y)}
               >
                 {symbol}
+                {/* &&
+                <img src={`/assets/${symbol}.png`} data-symbol={symbol} /> */}
               </div>
             ))}
           </div>
