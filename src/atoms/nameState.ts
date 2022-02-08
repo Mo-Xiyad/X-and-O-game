@@ -1,6 +1,10 @@
-import {atom} from "recoil"
+import { atom } from "recoil";
+import { recoilPersist } from "recoil-persist";
 
-export const nameState = atom({
-    key: "nameState",
-    default: ""
-})
+const { persistAtom } = recoilPersist();
+
+export const nameState = atom<string>({
+  key: "nameState",
+  default: "",
+  effects_UNSTABLE: [persistAtom],
+});
