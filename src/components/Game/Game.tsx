@@ -12,7 +12,7 @@ export default function Game() {
   }, [game]);
 
   return (
-    <div id="game" className="text-white bg-primary">
+    <div className="text-white bg-primary">
       <div className="flex justify-center pt-5">
         <h1 className="text-3xl" data-aos="fade-left">
           Welcome

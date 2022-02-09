@@ -135,17 +135,21 @@ export default function Board() {
           {opponent?.name}
         </h4>
       </header>
-      <div id="board" className="bg-primary items-center m-auto">
+      <div className="bg-primary items-center m-auto">
         {matrix.map((row, y) => (
           <div className="board-row flex" key={`row_${y}`}>
             {row.map((symbol, x) => (
               <div
-                className="board-cell w-[25vmin] h-[25vmin] cursor-pointer border-solid border-4 border-white text-2xl grid place-items-center"
+                className="board-cell w-[25vmin] h-[25vmin] cursor-pointer border-solid border-4 border-white text-2xl grid place-items-center first-of-type:border-t-0 first-of-type:border-l-0"
                 key={`cell_${x}`}
                 onClick={() => handleMatrixUpdate(x, y)}
               >
                 {symbol && (
-                  <img src={`/assets/${symbol}.png`} className="w-[50px] h-[50px]" data-symbol={symbol} />
+                  <img
+                    src={`/assets/${symbol}.png`}
+                    className="w-[50px] h-[50px]"
+                    data-symbol={symbol}
+                  />
                 )}
               </div>
             ))}
