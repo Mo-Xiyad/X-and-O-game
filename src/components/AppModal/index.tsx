@@ -22,7 +22,7 @@ return modal.display ? (
     //   w-[100%] h-[100%] top-0 left-0
     className="fixed bottom-0 w-[100%] bg-primary flex flex-col justify-center items-center"
   >
-    <h2 className="text-white text-2xl text-center relative top-[1em] m-auto">
+    <h2 className="text-white text-2xl text-center relative top-[1em] m-auto p-10">
       {modal.message}
     </h2>
 

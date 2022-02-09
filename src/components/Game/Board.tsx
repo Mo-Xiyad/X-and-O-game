@@ -4,6 +4,7 @@ import { nameState } from "../../atoms/nameState";
 import { symbolState } from "../../atoms/symbolState";
 import AOS from "aos";
 import { modalState } from "../../atoms/modalState";
+import { socketClient } from "../../App";
 
 export type Symbol = "O" | "X" | null;
 
@@ -43,6 +44,16 @@ export default function Board() {
       throw new Error("OPPONENT CAN'T BE NULL");
     }
   };
+
+  useEffect(() => {
+    socketClient.on("connect", () => {
+      console.log("connected...");
+      console.log(name);
+      socketClient.emit("loggedIn", { name, symbol });
+    });
+   
+  }, [setModal]);
+
 
     useEffect(() => {
       AOS.init({
