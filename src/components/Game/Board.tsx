@@ -3,6 +3,7 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { nameState } from "../../atoms/nameState";
 import { symbolState } from "../../atoms/symbolState";
 import AOS from "aos";
+import { modalState } from "../../atoms/modalState";
 
 export type Symbol = "O" | "X" | null;
 
@@ -22,16 +23,27 @@ export default function Board() {
     [null, null, null],
   ]);
   const name = useRecoilValue(nameState);
-  //   const [symbol, setSymbol] = useRecoilState(symbolState);
+    const [symbol, setSymbol] = useRecoilState(symbolState);
+  const setModal = useSetRecoilState(modalState);
 
-  const symbol: Symbol = "O";
+  const [opponent, setOpponent] = useState<Opponent | null>({name: "name", socketId: "socketId"});
+
+
+//   const symbol: Symbol = "O";
   const handleMatrixUpdate = (x: number, y: number) => {
     if (!!matrix[y][x]) return;
 
     const newMatrix = [...matrix];
     newMatrix[y][x] = symbol;
     setMatrix(newMatrix);
+
+    // console.log({ opponent })
+    if (!opponent) {
+      // should never happen
+      throw new Error("OPPONENT CAN'T BE NULL");
+    }
   };
+
     useEffect(() => {
       AOS.init({
         duration: 2000,
@@ -45,7 +57,7 @@ export default function Board() {
           Player one {name}
         </h4>
         <h4 className="text-white" data-aos="zoom-in-up">
-          Player two
+          {opponent?.name}
         </h4>
       </header>
       <div id="board" className="bg-primary items-center m-auto">

@@ -5,6 +5,6 @@ export const modalState = atom<AppModal>({
   key: "modalState",
   default: {
     message: "",
-    display: true,
+    display: false,
   },
 });

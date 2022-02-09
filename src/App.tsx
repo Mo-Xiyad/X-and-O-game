@@ -6,6 +6,12 @@ import { RecoilRoot } from "recoil";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import AppModal from "./components/AppModal";
+import { io } from "socket.io-client";
+
+export const socketClient = io(process.env.REACT_APP_BACKEND_URL!, {
+  transports: ["websocket"],
+});
+
 
 
 function App() {
