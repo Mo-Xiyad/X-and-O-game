@@ -57,7 +57,7 @@ const Enter = () => {
                 Player Name
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline antialiased font-mono"
+                className="mb-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline antialiased font-mono"
                 id="username"
                 type="text"
                 value={name}
@@ -65,23 +65,43 @@ const Enter = () => {
                 placeholder="Name"
               />
             </div>
-            <div className="inline">
+                <legend className="text-dark text-sm font-bold flex items-center justify-center mb-4 antialiased font-mono">Choose a Symbol</legend>
+            <div className="flex justify-around pb-5">
+            <div className="relative">
               <input
+                id="player-symbol-option-1"
                 type="radio"
-                className="default:ring-2"
-                value="O"
+                className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600"
+                value="O" 
                 checked={symbol === "O"}
-                onChange={(e) => setSymbol(e.target.value as Symbol)}
+                onChange={e => setSymbol(e.target.value as Symbol)}
               />
-              <h1>{symbol}</h1>
-              <input
-                type="radio"
-                className="default:ring-2"
-                value="X"
-                checked={symbol === "X"}
-                onChange={(e) => setSymbol(e.target.value as Symbol)}
-              />
+              <label
+                htmlFor="player-symbol-option-1"
+                className="inline-block ml-2 text-2xl font-bold text-gray-900 dark:text-gray-300"
+              >
+                <img data-symbol="O" src="/assets/O.png" className="absolute w-[50px] top-[-9%]" alt="" />
+              </label>
             </div>
+            <div className="relative">
+
+                <input
+                  id="player-symbol-option-2"
+                  type="radio"
+                  className=" w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600"
+                  value="X" 
+                  checked={symbol === "X"}
+                  onChange={e => setSymbol(e.target.value as Symbol)}
+                />
+                <label
+                  htmlFor="player-symbol-option-"
+                  className=" inline-block ml-2 text-2xl font-bold text-gray-900 dark:text-gray-300"
+                >
+                  <img data-symbol="X" src="/assets/X.png" className="absolute w-[50px] top-[-9%]" alt="" />
+                </label>
+            </div>
+            </div>
+
 
             <div className="flex items-center justify-center">
               <button

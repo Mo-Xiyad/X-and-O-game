@@ -145,7 +145,7 @@ export default function Board() {
                 onClick={() => handleMatrixUpdate(x, y)}
               >
                 {symbol && (
-                  <img src={`/assets/${symbol}.png`} data-symbol={symbol} />
+                  <img src={`/assets/${symbol}.png`} className="w-[50px] h-[50px]" data-symbol={symbol} />
                 )}
               </div>
             ))}
