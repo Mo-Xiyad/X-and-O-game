@@ -42,10 +42,10 @@ export default function Board() {
     <>
       <header className="pt-[2em] flex justify-between mx-[4ch]">
         <h4 className="text-white" data-aos="zoom-in-up">
-          player one {name}
+          Player one {name}
         </h4>
         <h4 className="text-white" data-aos="zoom-in-up">
-          player two
+          Player two
         </h4>
       </header>
       <div id="board" className="bg-primary items-center m-auto">
