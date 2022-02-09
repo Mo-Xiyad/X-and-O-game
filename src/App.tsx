@@ -13,7 +13,6 @@ export const socketClient = io(process.env.REACT_APP_BACKEND_URL!, {
 });
 
 
-
 function App() {
   useEffect(() => {
     AOS.init({

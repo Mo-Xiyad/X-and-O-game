@@ -1,23 +1,39 @@
 import React,{useState,useEffect} from "react";
 import { useNavigate } from "react-router";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { socketClient } from "../../App";
+import { gameState } from "../../atoms/gameState";
+import { modalState } from "../../atoms/modalState";
 import { nameState } from "../../atoms/nameState";
+import { symbolState } from "../../atoms/symbolState";
+import { Symbol } from "../Game/Board";
 
 const Enter = () => {
-  const [name, setName] = useRecoilState(nameState);
-  const navigate = useNavigate()
+ const [name, setName] = useRecoilState(nameState);
+ const [symbol, setSymbol] = useRecoilState(symbolState);
 
-  const handleSubmit = (e: React.FormEvent) => {
-  e.preventDefault();
-  if (name) {
-    navigate("/play");
-  }
-};
+ const navigate = useNavigate();
 
-  useEffect(() =>{
-    console.log(name);
-    
-  })
+ const handleSubmit = (e: React.FormEvent) => {
+   e.preventDefault();
+   if (name) {
+     navigate("/play");
+     socketClient.emit("loggedIn", { name, symbol });
+   }
+ };
+
+ const [game, setGameState] = useRecoilState(gameState);
+
+ const setModal = useSetRecoilState(modalState);
+
+ useEffect(() => {
+   if (game === "PLAYING") {
+     setGameState("ENTERING");
+     setModal((modal) => ({ ...modal, display: false }));
+     socketClient.emit("leave");
+   }
+ }, [game]);
+
   return (
     <div
       id="enter"
@@ -47,6 +63,23 @@ const Enter = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Name"
+              />
+            </div>
+            <div className="inline">
+              <input
+                type="radio"
+                className="default:ring-2"
+                value="O"
+                checked={symbol === "O"}
+                onChange={(e) => setSymbol(e.target.value as Symbol)}
+              />
+              <h1>{symbol}</h1>
+              <input
+                type="radio"
+                className="default:ring-2"
+                value="X"
+                checked={symbol === "X"}
+                onChange={(e) => setSymbol(e.target.value as Symbol)}
               />
             </div>
 
