@@ -1,13 +1,4 @@
 .board-row {
-  .board-cell {
-    &:nth-of-type(2) {
-      border-top: none;
-    }
-    &:nth-of-type(3) {
-      border-top: none;
-      border-right: none;
-    }
-  }
   &:last-of-type {
     .board-cell {
       border-bottom: none;
