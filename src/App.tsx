@@ -12,7 +12,6 @@ export const socketClient = io(process.env.REACT_APP_BACKEND_URL!, {
   transports: ["websocket"],
 });
 
-
 function App() {
   useEffect(() => {
     AOS.init({

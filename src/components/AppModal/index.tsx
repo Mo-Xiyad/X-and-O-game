@@ -3,6 +3,7 @@ import { modalState } from "../../atoms/modalState";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { symbolState } from "../../atoms/symbolState";
+import { socketClient } from "../../App";
 
 const AppModal = () => {
   const [modal, setModal] = useRecoilState(modalState);
@@ -18,9 +19,7 @@ const AppModal = () => {
   // console.log({ symbol })
 
   return modal.display ? (
-    <div
-      className="fixed bottom-0 w-[100%] bg-primary flex flex-col justify-center items-center"
-    >
+    <div className="fixed bottom-0 w-[100%] bg-primary flex flex-col justify-center items-center">
       <div
         className="w-[90%] flex justify-center self-center mt-5 p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
         role="alert"
@@ -38,6 +37,6 @@ const AppModal = () => {
       </button>
     </div>
   ) : null;
-};
+};;
 
 export default  AppModal
