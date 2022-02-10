@@ -93,6 +93,20 @@ export default function Board() {
        });
      }, [setModal]);
 
+useEffect(() => {
+          socketClient.on("connect", () => {
+            console.log("connected...");
+            console.log(name);
+            socketClient.emit("loggedIn", { name, symbol });
+          });
+           socketClient.on("waitingForOpponent", () => {
+             setModal({
+               message: "Waiting for another player...",
+               display: true,
+             });
+           });
+})
+
      useEffect(() => {
        const gameOver = ({
          winner,
