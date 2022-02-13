@@ -127,7 +127,7 @@ export default function Board() {
     <>
       <header className="pt-[2em] flex justify-between mx-[4ch]">
         <h4 className="text-white" data-aos="zoom-in-up">
-          Player one {name}
+          {name}
         </h4>
         <h4 className="text-white" data-aos="zoom-in-up">
           {opponent?.name}
