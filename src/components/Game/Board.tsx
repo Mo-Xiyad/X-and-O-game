@@ -25,8 +25,9 @@ export default function Board() {
       ]);
 
       const name = useRecoilValue(nameState);
-
+      
       const setModal = useSetRecoilState(modalState);
+      const modal = useRecoilValue(modalState);
 
       const [opponent, setOpponent] = useState<Opponent | null>(null);
 
@@ -72,7 +73,10 @@ export default function Board() {
               display: true,
             });
           } else {
-            setModal((t) => ({ ...t, display: false }));
+              setModal({
+                message: "You are starting...",
+                display: true,
+              });
           }
         });
 
@@ -129,7 +133,15 @@ export default function Board() {
           {opponent?.name}
         </h4>
       </header>
-      <div className="bg-primary items-center m-auto">
+      <div
+        className={
+          modal.message === "Waiting for your opponent..." ||
+          modal.message === "Waiting for another player..." ||
+          modal.message === "Waiting for your opponent move..."
+            ? "bg-primary items-center m-auto blur-sm"
+            : "bg-primary items-center m-auto"
+        }
+      >
         {matrix.map((row, y) => (
           <div
             className="board-row flex border-b-4 last-of-type:border-b-0"
@@ -137,7 +149,13 @@ export default function Board() {
           >
             {row.map((symbol, x) => (
               <div
-                className="last-of-type:border-l-0 board-cell w-[25vmin] h-[25vmin] cursor-pointer border-solid border-x-4 border-white grid place-items-center first-of-type:border-l-0 odd:border-r-0"
+                className={
+                  modal.message === "Waiting for your opponent..." ||
+                  modal.message === "Waiting for another player..." ||
+                  modal.message === "Waiting for your opponent move..."
+                    ? "last-of-type:border-l-0 board-cell w-[25vmin] h-[25vmin] cursor-not-allowed border-solid border-x-4 border-white grid place-items-center first-of-type:border-l-0 odd:border-r-0"
+                    : "last-of-type:border-l-0 board-cell w-[25vmin] h-[25vmin] cursor-pointer border-solid border-x-4 border-white grid place-items-center first-of-type:border-l-0 odd:border-r-0"
+                }
                 key={`cell_${x}`}
                 onClick={() => handleMatrixUpdate(x, y)}
               >
