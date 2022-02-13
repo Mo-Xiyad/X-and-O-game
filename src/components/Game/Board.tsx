@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { nameState } from "../../atoms/nameState";
 import { symbolState } from "../../atoms/symbolState";
-import AOS from "aos";
 import { modalState } from "../../atoms/modalState";
 import { socketClient } from "../../App";
 
