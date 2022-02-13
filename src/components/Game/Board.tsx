@@ -84,10 +84,10 @@ export default function Board() {
         });
 
         socketClient.on("yourTurn", ({ matrix }) => {
-          setModal((t) => ({
-            ...t,
-            display: false,
-          }));
+        setModal({
+          message: "Your turn...",
+          display: true,
+        });
 
           setMatrix(matrix);
         });
