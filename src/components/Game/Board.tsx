@@ -161,6 +161,7 @@ export default function Board() {
               >
                 {symbol && (
                   <img
+                  alt={symbol}
                     src={`/assets/${symbol}.png`}
                     className="w-[50px] h-[50px]"
                     data-symbol={symbol}
